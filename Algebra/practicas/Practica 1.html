@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chuleta Práctica 1 - SageMath</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#eef1f5;
+    color:#17202a;
+    margin:0;
+    line-height:1.3;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:15px;
+}
+
+header{
+    background:#172b4d;
+    color:white;
+    padding:18px;
+    border-radius:10px;
+    margin-bottom:12px;
+}
+
+h1{margin:0;font-size:25px}
+h2{
+    color:#17365d;
+    border-bottom:2px solid #3498db;
+    padding-bottom:4px;
+    margin-top:18px;
+}
+h3{
+    color:#21618c;
+    margin:5px 0 8px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    gap:10px;
+}
+
+.card{
+    background:white;
+    border-radius:8px;
+    padding:12px;
+    box-shadow:0 1px 4px #0002;
+    break-inside:avoid;
+}
+
+pre{
+    background:#202b38;
+    color:#f8f8f2;
+    padding:9px;
+    border-radius:5px;
+    overflow-x:auto;
+    font-size:13px;
+}
+
+code{
+    background:#edf0f2;
+    padding:2px 4px;
+    border-radius:3px;
+    font-family:Consolas,monospace;
+}
+
+.formula{
+    background:#eaf4ff;
+    border-left:4px solid #2980b9;
+    padding:9px;
+    margin:7px 0;
+    font-size:16px;
+}
+
+.important{
+    background:#fff3cd;
+    border-left:4px solid #f39c12;
+    padding:8px;
+    margin:7px 0;
+}
+
+.danger{
+    background:#fdecea;
+    border-left:4px solid #e74c3c;
+    padding:8px;
+    margin:7px 0;
+}
+
+.success{
+    background:#eafaf1;
+    border-left:4px solid #27ae60;
+    padding:8px;
+    margin:7px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th,td{
+    border:1px solid #ccd3da;
+    padding:6px;
+    text-align:left;
+}
+
+th{background:#dce6f1}
+
+.center{text-align:center}
+
+footer{
+    text-align:center;
+    color:#667;
+    font-size:12px;
+    margin-top:15px;
+}
+
+@media print{
+    body{
+        background:white;
+        font-size:9px;
+    }
+
+    .container{
+        padding:3px;
+        max-width:none;
+    }
+
+    header{
+        padding:9px;
+    }
+
+    h1{font-size:17px}
+    h2{font-size:13px;margin-top:10px}
+    h3{font-size:11px}
+
+    .grid{
+        grid-template-columns:1fr 1fr;
+        gap:5px;
+    }
+
+    .card{
+        box-shadow:none;
+        border:1px solid #ddd;
+        padding:6px;
+    }
+
+    pre{
+        font-size:8px;
+        padding:5px;
+    }
+
+    th,td{
+        padding:3px;
+    }
+
+    .formula,
+    .important,
+    .danger,
+    .success{
+        padding:5px;
+    }
+
+    @page{
+        margin:6mm;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+<h1>📘 CHULETA — PRÁCTICA 1</h1>
+Sistemas de ecuaciones lineales · SageMath · Matrices · Gauss · Gauss-Jordan
+</header>
+
+
+<!-- ===================================================== -->
+<!-- 1. SAGE -->
+<!-- ===================================================== -->
+
+<h2>⚡ 1. SAGE — COMANDOS IMPRESCINDIBLES</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Crear matrices</h3>
+
+<pre>A = matrix([[1,2],[3,4]])
+
+A = matrix(QQ, [[1,2],[3,4]])
+
+A = matrix(ZZ, [[1,2],[3,4]])</pre>
+
+<table>
+<tr>
+<th>Código</th>
+<th>Significado</th>
+</tr>
+
+<tr>
+<td><code>ZZ</code></td>
+<td>Enteros</td>
+</tr>
+
+<tr>
+<td><code>QQ</code></td>
+<td>Racionales</td>
+</tr>
+
+<tr>
+<td><code>RR</code></td>
+<td>Reales</td>
+</tr>
+</table>
+
+<div class="important">
+Para sistemas y fracciones: <strong>usa QQ</strong>.
+</div>
+
+</div>
+
+
+<div class="card">
+<h3>Matrices especiales</h3>
+
+<pre>identity_matrix(n)
+
+zero_matrix(n)
+
+zero_matrix(n,m)
+
+ones_matrix(n)
+
+ones_matrix(n,m)
+
+random_matrix(ZZ,n,n)</pre>
+</div>
+
+
+<div class="card">
+<h3>Operaciones</h3>
+
+<pre>A + B
+A - B
+A * B
+2 * A
+A^2
+
+A.transpose()
+A.det()
+A.rank()
+A.inverse()</pre>
+</div>
+
+
+<div class="card">
+<h3>Mostrar</h3>
+
+<pre>show(A)
+show(A,B)
+print(A)</pre>
+
+<p>
+<strong>show()</strong> → muestra la matriz de forma más limpia.
+</p>
+</div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 2. DIMENSIONES -->
+<!-- ===================================================== -->
+
+<h2>📐 2. PRODUCTO DE MATRICES</h2>
+
+<div class="card">
+
+<div class="formula center">
+<strong>(m × n) · (n × p) = (m × p)</strong>
+</div>
+
+<p>
+Las columnas de la primera matriz tienen que coincidir con las filas de la segunda.
+</p>
+
+<table>
+<tr>
+<th>Producto</th>
+<th>¿Se puede?</th>
+<th>Resultado</th>
+</tr>
+
+<tr>
+<td>2×3 · 3×2</td>
+<td>✅ Sí</td>
+<td>2×2</td>
+</tr>
+
+<tr>
+<td>3×2 · 2×3</td>
+<td>✅ Sí</td>
+<td>3×3</td>
+</tr>
+
+<tr>
+<td>2×3 · 2×3</td>
+<td>❌ No</td>
+<td>Dimensiones incompatibles</td>
+</tr>
+</table>
+
+<div class="danger">
+<strong>IMPORTANTE:</strong>
+A·B ≠ B·A en general.
+</div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 3. INDEXACION -->
+<!-- ===================================================== -->
+
+<h2>🔎 3. INDEXACIÓN — SAGE EMPIEZA EN 0</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Acceder a elementos</h3>
+
+<pre>A[i,j]
+
+A.row(i)
+
+A.column(j)
+
+A[i,:]
+
+A[:,j]
+
+A[i1:i2,j1:j2]</pre>
+
+<div class="important">
+⚠️ Sage/Python empieza a contar desde <strong>0</strong>.
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>Ejemplo</h3>
+
+<pre>A = matrix(QQ, [
+ [1,2,3,4],
+ [5,6,7,8],
+ [9,10,11,12],
+ [13,14,15,16]
+])
+
+A[0,1]       # 2
+
+A.row(2)     # fila 3
+
+A.column(1)  # columna 2
+
+A[0:2,1:3]  # submatriz</pre>
+
+</div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 4. PARAMETROS -->
+<!-- ===================================================== -->
+
+<h2>🔢 4. MATRICES CON PARÁMETROS</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Definir parámetro</h3>
+
+<pre>a = var('a')
+
+A = matrix([
+ [a,1],
+ [0,a-1]
+])</pre>
+
+</div>
+
+
+<div class="card">
+
+<h3>Operaciones</h3>
+
+<pre>A.transpose()
+
+A.det()
+
+A.rank()
+
+A.inverse()
+
+A.subs(a=2)</pre>
+
+<div class="success">
+<strong>subs()</strong> sustituye el parámetro por un valor.
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 5. DETERMINANTE -->
+<!-- ===================================================== -->
+
+<h2>📊 5. RANGO · DETERMINANTE · INVERSA</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Comandos</h3>
+
+<pre>A.rank()
+
+A.det()
+
+A.inverse()
+
+A.transpose()</pre>
+
+</div>
+
+
+<div class="card">
+
+<h3>Relaciones importantes</h3>
+
+<div class="formula">
+A es invertible ⇔ det(A) ≠ 0
+</div>
+
+<div class="formula">
+A es invertible ⇔ rg(A) = n
+</div>
+
+<div class="danger">
+Si det(A)=0 → A⁻¹ NO existe.
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 6. ROUCHE -->
+<!-- ===================================================== -->
+
+<h2>🚨 6. ROUCHÉ-FROBENIUS</h2>
+
+<div class="card">
+
+<p>
+Sistema:
+</p>
+
+<div class="formula center">
+<strong>Ax = b</strong>
+</div>
+
+<p>
+Matriz ampliada:
+</p>
+
+<pre>Ab = A.augment(b)</pre>
+
+<div class="formula">
+<strong>Compatible ⇔ rg(A) = rg(A|b)</strong>
+</div>
+
+<table>
+
+<tr>
+<th>Condición</th>
+<th>Tipo</th>
+<th>Soluciones</th>
+</tr>
+
+<tr>
+<td>rg(A) = rg(A|b) = n</td>
+<td>✅ SCD</td>
+<td>Una única</td>
+</tr>
+
+<tr>
+<td>rg(A) = rg(A|b) &lt; n</td>
+<td>♾️ SCI</td>
+<td>Infinitas</td>
+</tr>
+
+<tr>
+<td>rg(A) &lt; rg(A|b)</td>
+<td>❌ SI</td>
+<td>Ninguna</td>
+</tr>
+
+</table>
+
+<div class="important">
+<strong>n = número de incógnitas = número de columnas de A.</strong>
+</div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 7. GAUSS -->
+<!-- ===================================================== -->
+
+<h2>🧮 7. ELIMINACIÓN DE GAUSS</h2>
+
+<div class="card">
+
+<h3>Objetivo</h3>
+
+<div class="formula center">
+<strong>(A | b) → matriz triangular → solución</strong>
+</div>
+
+<h3>Operaciones elementales permitidas</h3>
+
+<ul>
+<li>Intercambiar dos filas.</li>
+<li>Multiplicar una fila por un número distinto de 0.</li>
+<li>Sumar a una fila un múltiplo de otra.</li>
+</ul>
+
+<h3>Comandos Sage</h3>
+
+<pre>
+# Fi ← Fi + t·Fj
+
+Ab = Ab.with_added_multiple_of_row(i,j,t)
+
+
+# Fi ← t·Fi
+
+Ab = Ab.with_rescaled_row(i,t)
+
+
+# Intercambiar filas
+
+Ab.swap_rows(i,j)
+</pre>
+
+<div class="important">
+<strong>Índices:</strong> fila matemática 1 → Sage 0<br>
+fila matemática 2 → Sage 1<br>
+fila matemática 3 → Sage 2
+</div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 8. CALCULAR T -->
+<!-- ===================================================== -->
+
+<h2>🎯 8. ¿QUÉ NÚMERO PONGO PARA HACER UN CERO?</h2>
+
+<div class="card">
+
+<div class="formula center">
+<strong>t = − elemento / pivote</strong>
+</div>
+
+<p>
+Si quieres eliminar un 3 y el pivote es 2:
+</p>
+
+<pre>t = -3/2</pre>
+
+<p>
+Entonces:
+</p>
+
+<pre>Fi ← Fi + (-3/2)Fj</pre>
+
+<p>
+En Sage:
+</p>
+
+<pre>Ab = Ab.with_added_multiple_of_row(i,j,-3/2)</pre>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 9. EJEMPLO GAUSS -->
+<!-- ===================================================== -->
+
+<h2>📝 9. PLANTILLA GAUSS 3×3</h2>
+
+<div class="card">
+
+<pre>
+A = matrix(QQ, [
+ [a11,a12,a13],
+ [a21,a22,a23],
+ [a31,a32,a33]
+])
+
+b = vector(QQ,[b1,b2,b3])
+
+Ab = A.augment(b)
+
+# PRIMER PIVOTE
+t = -Ab[1,0]/Ab[0,0]
+Ab = Ab.with_added_multiple_of_row(1,0,t)
+
+t = -Ab[2,0]/Ab[0,0]
+Ab = Ab.with_added_multiple_of_row(2,0,t)
+
+# SEGUNDO PIVOTE
+t = -Ab[2,1]/Ab[1,1]
+Ab = Ab.with_added_multiple_of_row(2,1,t)
+
+show(Ab)
+</pre>
+
+<div class="important">
+Después de esto → matriz triangular → sustitución hacia atrás.
+</div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 10. GAUSS JORDAN -->
+<!-- ===================================================== -->
+
+<h2>🔄 10. GAUSS-JORDAN</h2>
+
+<div class="card">
+
+<div class="formula center">
+<strong>(A | b) → (I | x)</strong>
+</div>
+
+<p>
+Diferencia:
+</p>
+
+<table>
+
+<tr>
+<th>Gauss</th>
+<th>Gauss-Jordan</th>
+</tr>
+
+<tr>
+<td>Ceros debajo de pivotes</td>
+<td>Ceros debajo Y encima</td>
+</tr>
+
+<tr>
+<td>Termina en triangular</td>
+<td>Termina en identidad</td>
+</tr>
+
+<tr>
+<td>Sustitución hacia atrás</td>
+<td>Solución directamente</td>
+</tr>
+
+</table>
+
+<h3>Normalizar pivote</h3>
+
+<pre>
+Ab = Ab.with_rescaled_row(i,1/pivote)
+</pre>
+
+<h3>Eliminar</h3>
+
+<pre>
+Ab = Ab.with_added_multiple_of_row(i,j,t)
+</pre>
+
+<div class="success">
+Objetivo final:
+<strong>(A|b) → (I|x)</strong>
+</div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 11. INVERSA -->
+<!-- ===================================================== -->
+
+<h2>🔓 11. INVERSA MEDIANTE GAUSS-JORDAN</h2>
+
+<div class="card">
+
+<div class="formula center">
+<strong>(A | I) → (I | A⁻¹)</strong>
+</div>
+
+<h3>Plantilla</h3>
+
+<pre>
+n = A.nrows()
+
+AI = A.augment(
+    identity_matrix(QQ,n)
+)
+
+# Aplicar Gauss-Jordan...
+
+# Cuando:
+# (I | A^-1)
+
+Ainv = AI[:,n:]
+</pre>
+
+<div class="important">
+Las mismas operaciones que convierten A en I convierten I en A⁻¹.
+</div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 12. MATRICES ELEMENTALES -->
+<!-- ===================================================== -->
+
+<h2>🧱 12. MATRICES ELEMENTALES</h2>
+
+<div class="card">
+
+<div class="formula">
+<strong>P · A = operación elemental aplicada a A</strong>
+</div>
+
+<table>
+
+<tr>
+<th>Matriz</th>
+<th>Operación</th>
+</tr>
+
+<tr>
+<td>Pᵢⱼ(t)</td>
+<td>Fᵢ ← Fᵢ + tFⱼ</td>
+</tr>
+
+<tr>
+<td>Pᵢ(t)</td>
+<td>Fᵢ ← tFᵢ</td>
+</tr>
+
+<tr>
+<td>Pᵢⱼ</td>
+<td>Fᵢ ↔ Fⱼ</td>
+</tr>
+
+</table>
+
+<div class="important">
+Todas se construyen a partir de la identidad Iₙ.
+</div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 13. FUNCIONES MATRICES ELEMENTALES -->
+<!-- ===================================================== -->
+
+<h2>🛠️ 13. FUNCIONES PARA MATRICES ELEMENTALES</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Fᵢ ← Fᵢ + tFⱼ</h3>
+
+<pre>
+def pijt(n,i,j,t):
+    P = identity_matrix(QQ,n)
+    P[i,j] = t
+    return P
+</pre>
+
+</div>
+
+
+<div class="card">
+
+<h3>Fᵢ ← tFᵢ</h3>
+
+<pre>
+def pit(n,i,t):
+    P = identity_matrix(QQ,n)
+    P[i,i] = t
+    return P
+</pre>
+
+</div>
+
+
+<div class="card">
+
+<h3>Intercambiar filas</h3>
+
+<pre>
+def pij(n,i,j):
+    P = identity_matrix(QQ,n)
+    P.swap_rows(i,j)
+    return P
+</pre>
+
+</div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 14. MATRICES ELEMENTALES EN GAUSS -->
+<!-- ===================================================== -->
+
+<h2>🔁 14. GAUSS USANDO MATRICES ELEMENTALES</h2>
+
+<div class="card">
+
+<p>
+En lugar de modificar directamente una fila:
+</p>
+
+<pre>
+Ab = Ab.with_added_multiple_of_row(1,0,-2)
+</pre>
+
+<p>
+podemos crear la matriz elemental:
+</p>
+
+<pre>
+P = pijt(3,1,0,-2)
+
+Ab = P * Ab
+</pre>
+
+<div class="important">
+
+<strong>MUY IMPORTANTE:</strong>
+
+<br><br>
+
+<strong>P · A</strong> → operaciones sobre filas.
+
+<br>
+
+<strong>A · P</strong> → operaciones sobre columnas.
+
+</div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 15. FUNCION GAUSS 3x3 -->
+<!-- ===================================================== -->
+
+<h2>🧩 15. FUNCIÓN elimGauss3x3</h2>
+
+<div class="card">
+
+<pre>
+def elimGauss3x3(A,b):
+
+    Ab = A.augment(b)
+
+    # Eliminar debajo del primer pivote
+    t = -Ab[1,0]/Ab[0,0]
+    Ab = Ab.with_added_multiple_of_row(1,0,t)
+
+    t = -Ab[2,0]/Ab[0,0]
+    Ab = Ab.with_added_multiple_of_row(2,0,t)
+
+    # Eliminar debajo del segundo pivote
+    t = -Ab[2,1]/Ab[1,1]
+    Ab = Ab.with_added_multiple_of_row(2,1,t)
+
+    # Sustitución hacia atrás
+    x3 = Ab[2,3]/Ab[2,2]
+
+    x2 = (
+        Ab[1,3] - Ab[1,2]*x3
+    ) / Ab[1,1]
+
+    x1 = (
+        Ab[0,3]
+        - Ab[0,1]*x2
+        - Ab[0,2]*x3
+    ) / Ab[0,0]
+
+    return vector([x1,x2,x3])
+</pre>
+
+<div class="danger">
+⚠️ Esta función es <strong>SIN PIVOTAJE</strong>.<br>
+Si aparece un pivote 0, hay que intercambiar filas.
+</div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 16. GAUSS GENERAL -->
+<!-- ===================================================== -->
+
+<h2>🔢 16. GAUSS PARA CUALQUIER n×n</h2>
+
+<div class="card">
+
+<pre>
+def elimGauss(A,b):
+
+    n = A.nrows()
+
+    Ab = A.augment(b)
+
+    # Eliminación
+    for k in range(n-1):
+
+        for i in range(k+1,n):
+
+            t = -Ab[i,k]/Ab[k,k]
+
+            Ab = Ab.with_added_multiple_of_row(
+                i,k,t
+            )
+
+    # Sustitución hacia atrás
+    x = vector(QQ,n)
+
+    for i in range(n-1,-1,-1):
+
+        suma = 0
+
+        for j in range(i+1,n):
+            suma += Ab[i,j]*x[j]
+
+        x[i] = (
+            Ab[i,n]-suma
+        ) / Ab[i,i]
+
+    return x
+</pre>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 17. POTENCIAS -->
+<!-- ===================================================== -->
+
+<h2>🔢 17. POTENCIAS DE MATRICES</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Directamente</h3>
+
+<pre>
+A^3
+A^5
+A^7
+A^20
+A^100
+</pre>
+
+<div class="important">
+En Sage: <code>^</code> = potencia.
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>Bucle</h3>
+
+<pre>
+for i in [1..3]:
+    print(i)
+</pre>
+
+<p>También:</p>
+
+<pre>
+for k in range(n):
+    ...
+</pre>
+
+<p>
+Para encontrar Aⁿ → calcula varios valores y busca el patrón.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 18. COMANDOS RAPIDOS -->
+<!-- ===================================================== -->
+
+<h2>🚀 18. TABLA RÁPIDA — ¿QUÉ ME PIDEN?</h2>
+
+<div class="card">
+
+<table>
+
+<tr>
+<th>Me piden...</th>
+<th>Escribo...</th>
+</tr>
+
+<tr>
+<td>Crear matriz</td>
+<td><code>A = matrix(QQ,[[...]])</code></td>
+</tr>
+
+<tr>
+<td>Identidad</td>
+<td><code>identity_matrix(n)</code></td>
+</tr>
+
+<tr>
+<td>Matriz cero</td>
+<td><code>zero_matrix(n)</code></td>
+</tr>
+
+<tr>
+<td>Matriz de unos</td>
+<td><code>ones_matrix(n)</code></td>
+</tr>
+
+<tr>
+<td>Matriz aleatoria</td>
+<td><code>random_matrix(ZZ,n,n)</code></td>
+</tr>
+
+<tr>
+<td>Traspuesta</td>
+<td><code>A.transpose()</code></td>
+</tr>
+
+<tr>
+<td>Determinante</td>
+<td><code>A.det()</code></td>
+</tr>
+
+<tr>
+<td>Rango</td>
+<td><code>A.rank()</code></td>
+</tr>
+
+<tr>
+<td>Inversa</td>
+<td><code>A.inverse()</code></td>
+</tr>
+
+<tr>
+<td>Ampliada</td>
+<td><code>A.augment(b)</code></td>
+</tr>
+
+<tr>
+<td>Resolver Ax=b</td>
+<td><code>A.solve_right(b)</code></td>
+</tr>
+
+<tr>
+<td>Fila i</td>
+<td><code>A.row(i)</code></td>
+</tr>
+
+<tr>
+<td>Columna j</td>
+<td><code>A.column(j)</code></td>
+</tr>
+
+<tr>
+<td>Elemento</td>
+<td><code>A[i,j]</code></td>
+</tr>
+
+<tr>
+<td>Parámetro</td>
+<td><code>a = var('a')</code></td>
+</tr>
+
+<tr>
+<td>Sustituir parámetro</td>
+<td><code>A.subs(a=2)</code></td>
+</tr>
+
+<tr>
+<td>Fi ← Fi+tFj</td>
+<td><code>with_added_multiple_of_row(i,j,t)</code></td>
+</tr>
+
+<tr>
+<td>Fi ← tFi</td>
+<td><code>with_rescaled_row(i,t)</code></td>
+</tr>
+
+<tr>
+<td>Intercambiar filas</td>
+<td><code>swap_rows(i,j)</code></td>
+</tr>
+
+<tr>
+<td>Mostrar</td>
+<td><code>show(A)</code></td>
+</tr>
+
+</table>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 19. ERRORES -->
+<!-- ===================================================== -->
+
+<h2>🚨 19. ERRORES TÍPICOS DEL EXAMEN</h2>
+
+<div class="grid">
+
+<div class="card danger">
+<strong>❌ Índices</strong>
+<br>
+Sage empieza en 0.
+</div>
+
+<div class="card danger">
+<strong>❌ Dimensiones</strong>
+<br>
+Antes de A*B comprueba:
+<br>
+<strong>columnas A = filas B</strong>
+</div>
+
+<div class="card danger">
+<strong>❌ Fracciones</strong>
+<br>
+Usa <code>QQ</code>.
+</div>
+
+<div class="card danger">
+<strong>❌ Pivote 0</strong>
+<br>
+Hay que intercambiar filas.
+</div>
+
+<div class="card danger">
+<strong>❌ Gauss ≠ Gauss-Jordan</strong>
+<br>
+Gauss → triangular.
+<br>
+Gauss-Jordan → identidad.
+</div>
+
+<div class="card danger">
+<strong>❌ P·A vs A·P</strong>
+<br>
+P·A → filas.
+<br>
+A·P → columnas.
+</div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- 20. CHECKLIST -->
+<!-- ===================================================== -->
+
+<h2>🏁 20. CHECKLIST FINAL</h2>
+
+<div class="card">
+
+<div class="success">
+
+☑ ¿He usado <code>QQ</code> si hay fracciones?
+
+<br><br>
+
+☑ ¿Recuerdo que Sage empieza en 0?
+
+<br><br>
+
+☑ ¿He comprobado las dimensiones?
+
+<br><br>
+
+☑ ¿He construido correctamente <code>A.augment(b)</code>?
+
+<br><br>
+
+☑ ¿He calculado <code>A.rank()</code> y <code>Ab.rank()</code>?
+
+<br><br>
+
+☑ ¿Sé distinguir SCD / SCI / SI?
+
+<br><br>
+
+☑ ¿Estoy usando el pivote correcto?
+
+<br><br>
+
+☑ ¿Para hacer un cero uso:
+<strong>t = −elemento/pivote</strong>?
+
+<br><br>
+
+☑ ¿Si uso matrices elementales multiplico por la izquierda?
+
+<br><br>
+
+☑ ¿Para Gauss-Jordan llego a <code>(I|x)</code>?
+
+<br><br>
+
+☑ ¿Para la inversa uso <code>(A|I) → (I|A⁻¹)</code>?
+
+<br><br>
+
+☑ ¿Si el pivote es 0 necesito pivotaje/intercambio de filas?
+
+</div>
+
+</div>
+
+
+<footer>
+Práctica 1 · Sistemas de ecuaciones lineales · SageMath
+</footer>
+
+</div>
+
+</body>
+</html>
