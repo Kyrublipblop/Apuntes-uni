@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FADE UNIZAR — Apuntes de examen</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#5f6b7a;--accent:#315efb;--accent2:#eaf0ff;--border:#dfe5ef;--warn:#fff5d8;--good:#eaf8ef}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:linear-gradient(135deg,#172554,#315efb);color:white;padding:54px 20px;text-align:center}
+header h1{font-size:clamp(28px,5vw,48px);margin:0 0 8px} header p{margin:0;opacity:.9}
+nav{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:10;display:flex;gap:8px;overflow:auto;padding:10px 16px}
+nav a{white-space:nowrap;text-decoration:none;color:var(--text);padding:8px 12px;border-radius:9px} nav a:hover{background:var(--accent2)}
+main{max-width:1050px;margin:auto;padding:28px 18px 70px}
+section{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px;margin:22px 0;box-shadow:0 4px 18px #18213b0b}
+h2{font-size:28px;margin-top:0;border-bottom:2px solid var(--accent2);padding-bottom:8px} h3{margin-top:28px;color:#213b91}
+p{margin:10px 0}.box{border-left:5px solid var(--accent);background:var(--accent2);padding:15px 18px;border-radius:10px;margin:18px 0}
+.exam{border-left-color:#e3a008;background:var(--warn)} .formula{text-align:center;font-size:19px;font-weight:750;padding:14px;background:#f7f8fa;border-radius:10px;margin:12px 0}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}th,td{border:1px solid var(--border);padding:10px;vertical-align:top}th{background:#eef2f8;text-align:left}
+ul{padding-left:24px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.card{border:1px solid var(--border);padding:16px;border-radius:12px}.card b{display:block;margin-bottom:5px}
+.graph{width:100%;max-width:760px;display:block;margin:18px auto;border:1px solid var(--border);border-radius:12px}
+details{border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin:8px 0}summary{cursor:pointer;font-weight:700}
+.small{color:var(--muted);font-size:14px}.tag{display:inline-block;background:var(--accent2);color:#2445ae;border-radius:999px;padding:3px 9px;font-size:13px;font-weight:700}
+@media(max-width:650px){section{padding:20px 16px}table{font-size:12px}h2{font-size:23px}}
+</style>
+</head>
+<body>
+<header>
+<h1>FADE · Fundamentos de Administración de Empresas</h1>
+<p>Apuntes de examen · Ingeniería Informática · UNIZAR</p>
+<p class="small" style="color:white;margin-top:8px">Tema 1 · Economía y empresa &nbsp; | &nbsp; Tema 3 · El mercado</p>
+</header>
+<nav>
+<a href="#t1">Tema 1</a><a href="#empresa">Empresa</a><a href="#formas">SL / SA</a>
+<a href="#t3">Tema 3</a><a href="#porter">Porter</a><a href="#demanda">Demanda</a>
+<a href="#elasticidad">Elasticidad</a><a href="#repaso">Repaso</a>
+</nav>
+<main>
+
+<section>
+<h2>🎯 Cómo estudiar estos apuntes</h2>
+<p>Están organizados para el examen: <b>concepto → explicación → gráfica/esquema → punto clave → posible trampa</b>.</p>
+<div class="box exam"><b>⚠ EXAMEN</b><br>Cuando veas esta caja, es una idea que conviene saber explicar con tus propias palabras y distinguir de conceptos parecidos.</div>
+<p class="small">Contenido basado en los dos materiales docentes facilitados. Cuando el material no aporta una expresión matemática recuperable como texto, no se presenta como si fuera una fórmula literal del PDF.</p>
+</section>
+
+<section id="t1">
+<h2>TEMA 1 · Economía y empresa</h2>
+<h3>1.1. El problema económico</h3>
+<p>La Economía estudia la <b>asignación de recursos escasos</b> para satisfacer <b>necesidades ilimitadas</b>.</p>
+<div class="grid">
+<div class="card"><b>¿Qué producir?</b> Qué bienes y servicios producir y en qué cantidad.</div>
+<div class="card"><b>¿Cómo producir?</b> Con qué recursos y tecnología.</div>
+<div class="card"><b>¿Para quién producir?</b> Cómo se reparte lo producido.</div>
+</div>
+<div class="box exam"><b>Idea para memorizar:</b> ESCasez → elección → coste de oportunidad.</div>
+
+<h3>1.2. Sistemas económicos</h3>
+<table><tr><th>Sistema</th><th>Idea central</th><th>Cómo se toman decisiones</th></tr>
+<tr><td><b>Mercado</b></td><td>Libertad de los agentes, propiedad privada y precios.</td><td>La interacción entre oferta y demanda coordina gran parte de la actividad.</td></tr>
+<tr><td><b>Planificada</b></td><td>Decisiones centralizadas.</td><td>Un comité central decide producción, precios, recursos, empleo, etc.</td></tr>
+<tr><td><b>Mixta</b></td><td>Mercado + intervención pública.</td><td>El mercado coordina gran parte de la actividad y el Estado regula, redistribuye y corrige fallos.</td></tr></table>
+
+<h3>Economía de mercado</h3>
+<p>Los <b>precios funcionan como señales</b>. Cuando un bien es escaso y aumenta su demanda, el precio puede subir, incentivando una mayor producción.</p>
+<h3>Economía planificada</h3>
+<p>Entre los problemas destacados en el material están la ineficiencia, errores de predicción, falta de innovación e incentivos, cuellos de botella y escasez.</p>
+<h3>Economía mixta</h3>
+<ul><li>Redistribución de la renta.</li><li>Defensa de la competencia.</li><li>Corrección de externalidades negativas.</li><li>Garantía de bienes preferentes como educación, I+D y sanidad.</li></ul>
+<div class="box exam"><b>Trampa:</b> economía mixta NO significa que todo esté planificado. Combina mecanismos de mercado con intervención del Estado.</div>
+</section>
+
+<section id="empresa">
+<h2>La empresa</h2>
+<h3>Valor añadido</h3>
+<p>La empresa genera riqueza mediante el <b>valor añadido</b>.</p>
+<div class="formula">Valor añadido = valor de la producción − valor de los bienes y servicios adquiridos</div>
+<p>La empresa participa en el mercado de bienes y servicios y en los mercados de factores productivos.</p>
+
+<h3>Objetivos económicos</h3>
+<ul>
+<li><b>Rentabilidad sostenible.</b></li>
+<li><b>Crecimiento y poder de mercado.</b></li>
+<li><b>Minimización del riesgo.</b></li>
+<li><b>Maximización del valor del negocio.</b></li>
+</ul>
+<div class="formula">Beneficio = Ingresos − Gastos</div>
+<div class="formula">Rentabilidad = Beneficio / Capital invertido</div>
+<p>El objetivo económico no debe reducirse simplemente a «ganar dinero»: interesa que el beneficio sea sostenible y que se tenga en cuenta el crecimiento, el riesgo y el valor del negocio.</p>
+<h3>Objetivos sociales</h3>
+<p>La empresa forma parte de la sociedad. La imagen pública, el patrocinio cultural/deportivo y el compromiso medioambiental pueden tener importancia empresarial.</p>
+<div class="box exam"><b>Cadena clave:</b> rentabilidad sostenible + crecimiento + menor riesgo → mayor valor del negocio, manteniendo constantes los demás factores.</div>
+
+<h3>Clases de empresas</h3>
+<table><tr><th>Criterio</th><th>Categorías</th></tr>
+<tr><td>Naturaleza</td><td>Lucrativas / no lucrativas</td></tr>
+<tr><td>Tamaño</td><td>Micro / pequeñas / medianas / grandes</td></tr>
+<tr><td>Actividad</td><td>Primario / secundario / terciario</td></tr>
+<tr><td>Titularidad del capital</td><td>Privadas / públicas / mixtas</td></tr>
+<tr><td>Forma jurídica</td><td>Empresario individual / sociedades mercantiles</td></tr></table>
+</section>
+
+<section id="formas">
+<h2>Empresario individual, S.L. y S.A.</h2>
+<table><tr><th></th><th>Empresario individual</th><th>S.L.</th><th>S.A.</th></tr>
+<tr><th>Personalidad</th><td>Persona física</td><td>Jurídica propia</td><td>Jurídica propia</td></tr>
+<tr><th>Responsabilidad</th><td>Ilimitada</td><td>Limitada</td><td>Limitada</td></tr>
+<tr><th>Capital</th><td>No es una sociedad con capital social mínimo</td><td>Según el material: mínimo indicado de 1 €</td><td>60.000 €, con 25 % desembolsado al constituirse</td></tr>
+<tr><th>Capital dividido en</th><td>—</td><td>Participaciones</td><td>Acciones</td></tr>
+<tr><th>Transmisión</th><td>—</td><td>Restringida</td><td>Libre</td></tr></table>
+<div class="box exam"><b>⚠ MUY IMPORTANTE:</b> S.L. → <b>participaciones</b>. S.A. → <b>acciones</b>.<br>
+S.L. → transmisión restringida. S.A. → libre transmisión de acciones según el material.</div>
+
+<h3>Órganos de gobierno de la S.A.</h3>
+<ul>
+<li><b>Junta General de Accionistas:</b> órgano supremo; cuentas, administradores, dividendos, estatutos.</li>
+<li><b>Órgano de administración:</b> ejecuta decisiones y gestiona la empresa.</li>
+<li><b>Director General:</b> gestión operativa diaria y representación ejecutiva.</li>
+</ul>
+
+<h3>Modelo conceptual de empresa</h3>
+<div class="grid">
+<div class="card"><b>Proceso directivo</b> Información → decisiones → instrucciones para adaptar o mejorar el funcionamiento.</div>
+<div class="card"><b>Proceso logístico</b> Recursos → producción → comercialización.</div>
+</div>
+<p>El proceso logístico comprende flujos físicos y monetarios: apropiación de recursos, producción y comercialización.</p>
+</section>
+
+<section id="t3">
+<h2>TEMA 3 · El mercado</h2>
+<h3>3.1. Entorno de la empresa</h3>
+<p>El entorno comprende variables externas a la empresa, fuera de su control, que pueden afectar a sus resultados.</p>
+<div class="box"><b>Dos niveles:</b> entorno general → <b>PESTEL</b> &nbsp; | &nbsp; entorno específico → <b>Porter</b></div>
+<h3>PESTEL</h3>
+<div class="grid">
+<div class="card"><b>P · Político</b>Legislación, subvenciones, políticas gubernamentales.</div>
+<div class="card"><b>E · Económico</b>Ciclo, inflación, tipos de interés, tipos de cambio, política fiscal.</div>
+<div class="card"><b>S · Social</b>Valores, creencias, demografía y cambios sociales.</div>
+<div class="card"><b>T · Tecnológico</b>TIC, infraestructuras y cambios tecnológicos.</div>
+<div class="card"><b>E · Ecológico</b>Medioambiente y sostenibilidad.</div>
+<div class="card"><b>L · Legal</b>Normativa aplicable.</div>
+</div>
+<div class="box exam"><b>PESTEL = macroentorno / entorno general.</b></div>
+</section>
+
+<section id="porter">
+<h2>Las cinco fuerzas de Porter</h2>
+<div class="grid">
+<div class="card"><b>1. Rivalidad</b>Competencia entre empresas existentes.</div>
+<div class="card"><b>2. Nuevos entrantes</b>Amenaza de empresas que pueden entrar en el sector.</div>
+<div class="card"><b>3. Sustitutivos</b>Productos diferentes que satisfacen la misma necesidad.</div>
+<div class="card"><b>4. Proveedores</b>Poder negociador sobre precios y condiciones.</div>
+<div class="card"><b>5. Clientes</b>Poder negociador de los compradores.</div>
+</div>
+<h3>Barreras de entrada</h3>
+<ul><li>Regulaciones estatales.</li><li>Diferencias en costes.</li><li>Control de un recurso esencial.</li><li>Economías de escala.</li><li>Diferenciación de producto.</li></ul>
+<div class="box exam"><b>Porter = entorno específico.</b> Si aumentan las fuerzas competitivas, en general disminuye el atractivo del sector.</div>
+</section>
+
+<section>
+<h2>Estructuras de mercado</h2>
+<table><tr><th>Estructura</th><th>Vendedores</th><th>Producto</th><th>Poder sobre precio</th></tr>
+<tr><td><b>Competencia perfecta</b></td><td>Muchos</td><td>Homogéneo</td><td>Mínimo/nulo individual</td></tr>
+<tr><td><b>Competencia monopolística</b></td><td>Muchos</td><td>Diferenciado</td><td>Alguno</td></tr>
+<tr><td><b>Oligopolio</b></td><td>Pocos</td><td>Igual o diferenciado</td><td>Alto e interdependiente</td></tr>
+<tr><td><b>Monopolio</b></td><td>Uno</td><td>Sin sustituto cercano</td><td>Muy alto</td></tr></table>
+
+<h3>Competencia perfecta</h3>
+<ul><li>Muchos oferentes y demandantes.</li><li>Producto homogéneo.</li><li>Información perfecta.</li><li>Libertad de entrada y salida a largo plazo.</li><li>Cada empresa individual no puede alterar el precio de mercado.</li></ul>
+<div class="formula">Equilibrio = intersección de oferta y demanda</div>
+<div class="box exam">A largo plazo, si existen beneficios, entran nuevas empresas → aumenta la oferta → baja el precio → el beneficio tiende a cero.</div>
+
+<h3>Competencia monopolística</h3>
+<p>Hay muchas empresas, pero los productos son similares y no idénticos. La diferenciación crea cierto poder de mercado. Importan características del producto, publicidad, servicio posventa y distribución.</p>
+<h3>Monopolio</h3>
+<p>Existe un único vendedor. El monopolista decide la cantidad que maximiza su beneficio teniendo en cuenta que afecta al precio.</p>
+<h3>Oligopolio</h3>
+<p>Hay pocos competidores y sus decisiones son <b>interdependientes</b>. Si hay dos empresas, se habla de duopolio.</p>
+</section>
+
+<section id="demanda">
+<h2>Demanda</h2>
+<p>La demanda es el volumen total de compras de un producto o marca realizado por un grupo de clientes en un momento y lugar determinados, bajo determinadas condiciones y para un esfuerzo de marketing dado.</p>
+<h3>Tipos</h3>
+<ul><li>Demanda final.</li><li>Demanda derivada.</li><li>Demanda global.</li><li>Demanda de empresa.</li><li>Demanda de marca.</li></ul>
+<h3>Demanda global</h3>
+<div class="formula">Q = f(E, M)</div>
+<p><b>Q</b> = demanda global; <b>E</b> = variables del entorno; <b>M</b> = esfuerzo total de marketing.</p>
+<div class="box"><b>Interpretación de la curva:</b> parte de una demanda mínima Q₀ cuando el marketing es nulo y se aproxima al mercado potencial Qm cuando el esfuerzo de marketing crece mucho, para un entorno dado.</div>
+<h3>Demanda de empresa y 4P</h3>
+<div class="grid">
+<div class="card"><b>Product</b> Producto</div><div class="card"><b>Price</b> Precio</div>
+<div class="card"><b>Place</b> Distribución</div><div class="card"><b>Promotion</b> Comunicación</div>
+</div>
+<p>Producto y distribución se consideran variables estratégicas; precio y comunicación, tácticas.</p>
+<h3>Cuota de mercado</h3>
+<div class="formula">mᵢ = qᵢ / Q &nbsp;&nbsp; → &nbsp;&nbsp; ×100 para porcentaje</div>
+<div class="box exam">Ejemplo: 20 unidades vendidas por una marca en un mercado de 100 → cuota = 20 %.</div>
+</section>
+
+<section id="elasticidad">
+<h2>Elasticidad de la demanda</h2>
+<p>La elasticidad mide la <b>sensibilidad</b> de la demanda ante cambios relativos en una variable explicativa.</p>
+<div class="formula">Elasticidad = % variación de Q / % variación de X</div>
+<h3>Elasticidad-precio</h3>
+<div class="formula">EPD = % variación de Q / % variación de P</div>
+<p>Para la mayoría de bienes, la relación precio-demanda es inversa, por lo que la elasticidad-precio suele aparecer con signo negativo. Para clasificarla se suele mirar su valor absoluto.</p>
+<table><tr><th>Tipo</th><th>Valor</th><th>Respuesta de Q</th></tr>
+<tr><td>Perfectamente inelástica</td><td>EPD = 0</td><td>Q no cambia ante P.</td></tr>
+<tr><td>Inelástica</td><td>0 &lt; |EPD| &lt; 1</td><td>Q cambia menos que proporcionalmente.</td></tr>
+<tr><td>Elástica</td><td>|EPD| &gt; 1</td><td>Q cambia más que proporcionalmente.</td></tr>
+<tr><td>Perfectamente elástica</td><td>|EPD| → ∞</td><td>Pequeño cambio de P puede provocar gran cambio en Q.</td></tr></table>
+<div class="box exam"><b>Regla útil:</b> cuantos más sustitutos cercanos tenga un bien, mayor tiende a ser su elasticidad-precio. Los bienes básicos suelen ser más inelásticos.</div>
+</section>
+
+<section>
+<h2>Estimación de la demanda</h2>
+<div class="grid">
+<div class="card"><b>Opiniones</b>Vendedores · jurado de ejecutivos · Delphi.</div>
+<div class="card"><b>Investigación de mercados</b>Intención de compra · test de concepto · test de producto · test de mercado.</div>
+<div class="card"><b>Series temporales</b>Método simple · media móvil · alisado exponencial · tendencia · descomposición · autorregresivos.</div>
+<div class="card"><b>Relaciones causales</b>Modelos lineales · no lineales · modelos especiales.</div>
+</div>
+<p>En series temporales pueden analizarse tendencia (T), variaciones cíclicas (C), estacionales (S) y errores aleatorios (E). En el alisado exponencial, las observaciones recientes tienen mayor peso.</p>
+<p>Los modelos causales relacionan la demanda con variables explicativas que pueden ser controlables o no controlables.</p>
+</section>
+
+<section>
+<h2>Información y economía digital</h2>
+<p><b>Datos</b> = hechos, estadísticas o predicciones sin organizar.</p>
+<p><b>Información</b> = datos organizados de forma que son útiles o relevantes.</p>
+<p><b>Sistema de información</b> = obtiene, registra y analiza datos para transformarlos en información útil para decidir.</p>
+<ul><li>Teletrabajo.</li><li>Nube.</li><li>Redes sociales.</li><li>Seguridad de la información.</li><li>Resistencia al cambio.</li><li>Inteligencia artificial.</li></ul>
+</section>
+
+<section id="repaso">
+<h2>🧠 Repaso final para el examen</h2>
+<div class="grid">
+<div class="card"><b>ECONOMÍA</b>Escasez → qué / cómo / para quién.</div>
+<div class="card"><b>EMPRESA</b>Valor añadido → rentabilidad + crecimiento + riesgo + valor.</div>
+<div class="card"><b>ENTORNO</b>PESTEL = general · Porter = específico.</div>
+<div class="card"><b>MERCADO</b>Perfecta · monopolística · oligopolio · monopolio.</div>
+<div class="card"><b>DEMANDA</b>Global · empresa · marca · 4P · cuota.</div>
+<div class="card"><b>ELASTICIDAD</b>Sensibilidad relativa de Q ante una variable.</div>
+</div>
+
+<h3>Verdadero / Falso</h3>
+<details><summary>La Economía estudia la asignación de recursos escasos a necesidades ilimitadas.</summary><p>✅ Verdadero.</p></details>
+<details><summary>En una economía planificada los precios se fijan exclusivamente por oferta y demanda.</summary><p>❌ Falso. Las decisiones están centralizadas.</p></details>
+<details><summary>En una economía mixta el Estado puede redistribuir la renta.</summary><p>✅ Verdadero.</p></details>
+<details><summary>En competencia perfecta una empresa individual puede fijar el precio de mercado.</summary><p>❌ Falso. Toma el precio de mercado como dado.</p></details>
+<details><summary>Un monopolio tiene un único vendedor.</summary><p>✅ Verdadero.</p></details>
+<details><summary>Un oligopolio tiene muchos vendedores sin interdependencia.</summary><p>❌ Falso. Hay pocos competidores y sus decisiones son interdependientes.</p></details>
+<details><summary>Un sustitutivo tiene que ser idéntico al producto original.</summary><p>❌ Falso. Puede ser diferente y satisfacer la misma necesidad.</p></details>
+<details><summary>PESTEL analiza el entorno general.</summary><p>✅ Verdadero.</p></details>
+<details><summary>Porter analiza cinco fuerzas competitivas del entorno específico.</summary><p>✅ Verdadero.</p></details>
+<details><summary>Una S.L. divide su capital en acciones.</summary><p>❌ Falso. El material distingue participaciones en la S.L. y acciones en la S.A.</p></details>
+<details><summary>Los bienes básicos suelen presentar demanda perfectamente elástica.</summary><p>❌ Falso. Su demanda suele ser más inelástica.</p></details>
+
+<h3>Fórmulas imprescindibles</h3>
+<div class="formula">Beneficio = Ingresos − Gastos</div>
+<div class="formula">Rentabilidad = Beneficio / Capital invertido</div>
+<div class="formula">Valor añadido = Producción − compras externas</div>
+<div class="formula">Q = f(E,M)</div>
+<div class="formula">Cuota = qᵢ / Q × 100</div>
+<div class="formula">Elasticidad = %ΔQ / %ΔX</div>
+<div class="formula">EPD = %ΔQ / %ΔP</div>
+
+<div class="box exam"><b>Último consejo:</b> para el examen no te limites a memorizar definiciones. Practica explicar cada concepto en 2–3 frases y, sobre todo, distinguir pares que se confunden: <b>PESTEL/Porter · SL/SA · monopolio/oligopolio · demanda global/demanda de empresa · elástica/inelástica.</b></div>
+</section>
+
+<footer class="small" style="text-align:center;padding:20px">
+Apuntes de estudio basados en los dos materiales docentes proporcionados.
+</footer>
+</main>
+</body>
+</html>
